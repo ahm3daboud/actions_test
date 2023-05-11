@@ -19,7 +19,7 @@ jobs:
       - name: Get tag
         id: tag
         uses: dawidd6/action-get-tag@v1
-      - name test tag
+      - name: test tag
         if: startsWith(github.ref, 'refs/tags/v')        
         run: echo "${{ steps.tag.outputs.tag }}"
         if: github.ref == "refs/heads/development"  
