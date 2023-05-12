@@ -23,7 +23,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')        
         run: echo "${{ github.ref_name }}"
       - name: Test
-	id: gettest
+        id: gettest
         if: github.ref == 'refs/heads/development'
         run: echo "version=$(cat test)" >> $GITHUB_OUTPUT
       - name: dev echo
