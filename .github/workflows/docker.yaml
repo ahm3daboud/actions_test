@@ -24,7 +24,7 @@ jobs:
         run: echo "${{ github.ref_name }}"
       - name: getTest
         if: github.ref == 'refs/heads/development'
-        run: echo "version=$(cat version.txt)" >> $GITHUB_OUTPUT
+        run: echo "version=$(cat test)" >> $GITHUB_OUTPUT
       - name: dev echo
         if: github.ref == 'refs/heads/development'
         run: echo "${{ steps.getTest.outputs.version }}"
