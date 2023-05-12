@@ -18,14 +18,17 @@ jobs:
         uses: actions/checkout@v2
       - name: Get tag
         if: startsWith(github.ref, 'refs/tags/v') 
-        id: tag
-        uses: dawidd6/action-get-tag@v1
+        run: echo "${{ github.ref_name }}"
       - name: test tag
         if: startsWith(github.ref, 'refs/tags/v')        
-        run: echo "${{ steps.tag.outputs.tag }}"
-      - name: dev test
+        run: echo "${{ github.ref_name }}"
+      - name: Test
+        id: gettest
         if: github.ref == 'refs/heads/development'
-        run: echo "This is a dev test"
+        run: echo "version=$(cat test)" >> $GITHUB_OUTPUT
+      - name: dev echo
+        if: github.ref == 'refs/heads/development'
+        run: echo "${{ steps.gettest.outputs.version }}"
 
       # - name: Push
       #   if: github.ref == 'refs/heads/development'
