@@ -22,13 +22,13 @@ jobs:
       - name: test tag
         if: startsWith(github.ref, 'refs/tags/v')        
         run: echo "${{ github.ref_name }}"
-      - name: getTest
-	id: getTest
+      - name: Test
+	id: gettest
         if: github.ref == 'refs/heads/development'
         run: echo "version=$(cat test)" >> $GITHUB_OUTPUT
       - name: dev echo
         if: github.ref == 'refs/heads/development'
-        run: echo "${{ steps.getTest.outputs.version }}"
+        run: echo "${{ steps.gettest.outputs.version }}"
 
       # - name: Push
       #   if: github.ref == 'refs/heads/development'
